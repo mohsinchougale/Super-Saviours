@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext, useRef, useState } from "react";
 import {
   BoldLink,
   BoxContainer,
@@ -35,6 +35,7 @@ export function SignupForm(props) {
       .then((response) => response.json(), navigate("/"))
       .then((data) => {
         console.log("Success:", data);
+        // setSignedIn({firstName:user.fullName,loggedIn:"True"})
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -54,7 +55,7 @@ export function SignupForm(props) {
       </FormContainer>
       <Marginer direction="vertical" margin={10} />
       <SubmitButton type="submit" onClick={saveDetails}>
-        Signup
+        Register
       </SubmitButton>
       <Marginer direction="vertical" margin="1em" />
       <MutedLink href="#">

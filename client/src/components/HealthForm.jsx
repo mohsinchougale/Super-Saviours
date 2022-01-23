@@ -20,51 +20,6 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 
-// const useStyles = makeStyles((theme) => ({
-//   modal: {
-//     display: 'flex',
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//   },
-//   paper: {
-//     backgroundColor: theme.palette.background.paper,
-//     border: '2px solid #000',
-//     boxShadow: theme.shadows[5],
-//     padding: theme.spacing(2, 4, 3),
-//   },
-// }));
-
-// export default function TransitionsModal() {
-//   const classes = useStyles();
-
-//   return (
-//     <div>
-//       <button type="button" onClick={handleOpen}>
-//         react-transition-group
-//       </button>
-//       <Modal
-//         aria-labelledby="transition-modal-title"
-//         aria-describedby="transition-modal-description"
-//         className={classes.modal}
-//         open={open}
-//         onClose={handleClose}
-//         closeAfterTransition
-//         BackdropComponent={Backdrop}
-//         BackdropProps={{
-//           timeout: 500,
-//         }}
-//       >
-//         <Fade in={open}>
-//           <div className={classes.paper}>
-//             <h2 id="transition-modal-title">Transition modal</h2>
-//             <p id="transition-modal-description">react-transition-group animates me.</p>
-//           </div>
-//         </Fade>
-//       </Modal>
-//     </div>
-//   );
-// }
-
 const useStyles = makeStyles((theme) => ({
   root: {
     "& > *": {
@@ -94,7 +49,7 @@ export default function HealthForm() {
 
   const classes = useStyles();
   const ageRef = useRef();
-  const genderRef = useRef();
+  const genderRef = useRef("");
   const weightRef = useRef();
   const heightRef = useRef();
   const neckRef = useRef();
@@ -116,17 +71,26 @@ export default function HealthForm() {
     setOpen(false);
   };
   const showModal = () => {
+    console.log(
+      ageRef.current.value,
+      genderRef.current.value,
+      weightRef.current.value,
+      heightRef.current.value,
+      neckRef.current.value,
+      waistRef.current.value,
+      hipRef.current.value
+    );
     var options = {
       method: "GET",
       url: "https://fitness-calculator.p.rapidapi.com/bodyfat",
       params: {
-        age: "25",
-        gender: "male",
-        weight: "70",
-        height: "178",
-        neck: "50",
-        waist: "96",
-        hip: "92",
+        age: ageRef.current.value,
+        gender: genderRef.current.value,
+        weight: weightRef.current.value,
+        height: heightRef.current.value,
+        neck: neckRef.current.value,
+        waist: waistRef.current.value,
+        hip: hipRef.current.value,
       },
       headers: {
         "x-rapidapi-host": "fitness-calculator.p.rapidapi.com",
@@ -158,49 +122,49 @@ export default function HealthForm() {
             label="age"
             variant="outlined"
             required
-            ref={ageRef}
+            inputRef={ageRef}
           />
           <TextField
             id="outlined-basic"
             label="gender"
             variant="outlined"
             required
-            ref={genderRef}
+            inputRef={genderRef}
           />
           <TextField
             id="outlined-basic"
-            label="weight"
+            label="weight(in kg)"
             variant="outlined"
             required
-            ref={weightRef}
+            inputRef={weightRef}
           />
           <TextField
             id="outlined-basic"
-            label="height"
+            label="height(in cm)"
             variant="outlined"
             required
-            ref={heightRef}
+            inputRef={heightRef}
           />
           <TextField
             id="outlined-basic"
-            label="neck"
+            label="neck(in cm)"
             variant="outlined"
             required
-            ref={neckRef}
+            inputRef={neckRef}
           />
           <TextField
             id="outlined-basic"
-            label="waist"
+            label="waist(in cm)"
             variant="outlined"
             required
-            ref={waistRef}
+            inputRef={waistRef}
           />
           <TextField
             id="outlined-basic"
-            label="hip"
+            label="hip(in cm)"
             variant="outlined"
             required
-            ref={hipRef}
+            inputRef={hipRef}
           />
 
           <Button

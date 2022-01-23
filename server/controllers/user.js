@@ -22,7 +22,7 @@ export const signin = async (req, res) => {
       expiresIn: "1h",
     });
 
-    res.status(200).json({ result: oldUser, token });
+    res.status(200).json({ result: oldUser, email: email });
   } catch (err) {
     res.status(500).json({ message: "Something went wrong" });
   }
@@ -51,7 +51,7 @@ export const signup = async (req, res) => {
       expiresIn: "1h",
     });
 
-    res.status(200).json({ result, token });
+    res.status(200).json({ result, token, email: email });
   } catch (error) {
     res.status(500).json({ message: error });
 

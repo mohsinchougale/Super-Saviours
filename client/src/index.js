@@ -11,7 +11,7 @@ import Map from "./components/Map";
 import Police from "./components/Police";
 import Hospitals from "./components/Hospitals";
 import MedicalReport from "./components/MedicalReport";
-import SOS from "./components/SOS";
+// import SOS from "./components/SOS";
 
 ReactDOM.render(
   <BrowserRouter>
@@ -25,7 +25,7 @@ ReactDOM.render(
       <Route path="/ghc" element={<HealthForm />} />
       <Route path="/umr" element={<MedicalReport />} />
       <Route path="/" element={<Home />} />
-      <Route path="/sos" element={<SOS />} />
+      {/* <Route path="/sos" element={<SOS />} /> */}
       {/* <Route path="/hospitals" element={<Hospitals />} />
       <Route path="/hospitals" element={<Hospitals />} />
       <Route path="/hospitals" element={<Hospitals />} /> */}

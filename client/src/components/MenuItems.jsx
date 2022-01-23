@@ -9,9 +9,4 @@ export const MenuItems = [
     path: "/policestations",
     cName: "dropdown-link",
   },
-  {
-    title: "SOS",
-    path: "/sos",
-    cName: "dropdown-link",
-  },
 ];

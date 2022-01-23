@@ -39,6 +39,7 @@ export function LoginForm(props) {
       .catch((error) => {
         console.error("Error:", error);
       });
+    navigate("/");
   };
 
   return (
@@ -51,13 +52,13 @@ export function LoginForm(props) {
       <MutedLink href="#">Forget your password?</MutedLink>
       <Marginer direction="vertical" margin="1.6em" />
       <SubmitButton type="submit" onClick={saveDetails}>
-        Signin
+        Sign In
       </SubmitButton>
       <Marginer direction="vertical" margin="1em" />
       <MutedLink href="#">
         Don't have an accoun?{" "}
         <BoldLink href="#" onClick={switchToSignup}>
-          Signup
+          Register
         </BoldLink>
       </MutedLink>
     </BoxContainer>
