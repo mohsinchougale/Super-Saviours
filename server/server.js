@@ -2,12 +2,11 @@ import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
-import projectRoutes from "./routes/projects.js";
+import userRoutes from "./routes/user.js";
 
 const app = express();
-const dotenv = require("dotenv");
 
-dotenv.config({ path: "./config.env" });
+dotenv.config();
 
 const PORT = process.env.PORT;
 app.listen(PORT, () => console.log(`Server running at ${PORT}`));

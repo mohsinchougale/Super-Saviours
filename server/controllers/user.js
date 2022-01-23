@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken";
 
 import User from "../models/user.js";
 
-const secret = process.env.SECRET;
+const secret = "test";
 
 export const signin = async (req, res) => {
   const { email, password } = req.body;
@@ -30,7 +30,7 @@ export const signin = async (req, res) => {
 };
 
 export const signup = async (req, res) => {
-  const { email, password, confirmPassword, firstName, lastName } = req.body;
+  const { email, password, password1, name } = req.body;
 
   try {
     const oldUser = await User.findOne({ email });
@@ -38,14 +38,14 @@ export const signup = async (req, res) => {
     if (oldUser)
       return res.status(400).json({ message: "User already exists" });
 
-    if (password != confirmPassword)
+    if (password != password1)
       return res.status(400).json({ message: "Passwords do not match " });
     const hashedPassword = await bcrypt.hash(password, 12);
 
     const result = await User.create({
       email,
       password: hashedPassword,
-      name: `${firstName} ${lastName}`,
+      name: `${name} `,
     });
 
     const token = jwt.sign({ email: result.email, id: result._id }, secret, {
@@ -54,7 +54,7 @@ export const signup = async (req, res) => {
 
     res.status(200).json({ result, token });
   } catch (error) {
-    res.status(500).json({ message: "Something went wrong" });
+    res.status(500).json({ message: error });
 
     console.log(error);
   }
